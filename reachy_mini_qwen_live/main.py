@@ -18,6 +18,7 @@ from .realtime import Session
 class ConfigUpdate(BaseModel):
     api_key: str | None = None
     workspace_id: str | None = None
+    region: str | None = None
     voice: str | None = None
     instructions: str | None = Field(default=None, max_length=4000)
     motion_enabled: bool | None = None

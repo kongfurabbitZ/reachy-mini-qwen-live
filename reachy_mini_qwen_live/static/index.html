@@ -8,20 +8,22 @@
 </head>
 <body>
   <main>
-    <header><div class="eyebrow">REACHY MINI · LOCAL APP</div><h1>千问 Live</h1>
-      <p>用百炼实时语音模型与 Reachy Mini 对话，保留轻微待机、聆听和回应动作。</p></header>
+    <header><div class="eyebrow">REACHY MINI · 中文应用</div><h1>千问 Live</h1>
+      <p>用百炼千问 Live 模型与 Reachy Mini 对话；回答时，天线和头部会配合动作。</p></header>
     <section class="card">
       <div class="row"><h2>会话</h2><span id="state" class="badge">读取中</span></div>
       <p id="error" class="error" hidden></p>
       <div class="buttons"><button id="start" class="primary">开始对话</button><button id="stop">结束对话</button></div>
-      <p class="hint">此版本使用华北2（北京）的 qwen3.8-omni-flash-realtime。音频由 Reachy Mini 的麦克风和扬声器传输。</p>
+      <p class="hint">使用 qwen3.8-omni-flash-realtime 实时语音模型。音频由 Reachy Mini 的麦克风和扬声器传输。</p>
     </section>
     <section class="card">
       <h2>百炼设置</h2>
       <form id="settings">
+        <label>百炼服务地域 <select id="region"><option value="cn-beijing">华北2（北京）</option><option value="ap-southeast-1">新加坡</option></select></label>
         <label>业务空间 ID <input id="workspace" autocomplete="off" placeholder="在百炼控制台的业务空间详情中查找"></label>
         <label>API Key <input id="key" type="password" autocomplete="new-password" placeholder="留空表示不更改已保存的 Key"></label>
         <p id="key-state" class="hint"></p>
+        <p class="hint">API Key 和业务空间 ID 必须与所选地域一致。切换地域时，请同时更新这两项。</p>
         <label>音色 <select id="voice"><option>Tina</option><option>Cherry</option><option>Chelsie</option></select></label>
         <label>角色说明 <textarea id="instructions" rows="3"></textarea></label>
         <label class="check"><input id="motion" type="checkbox">启用动作反馈</label>

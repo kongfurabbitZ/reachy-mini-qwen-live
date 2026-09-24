@@ -13,7 +13,6 @@ from aiortc import RTCConfiguration, RTCPeerConnection, RTCSessionDescription
 from aiortc.mediastreams import MediaStreamError
 
 from .audio import Microphone, Speaker
-from .config import MODEL
 
 LOG = logging.getLogger(__name__)
 
@@ -53,7 +52,7 @@ class Session:
 
     def start(self):
         if not self.settings.api_key or not self.settings.workspace_id:
-            raise ValueError("请先填写华北2（北京）地域的 API Key 和业务空间 ID")
+            raise ValueError("请先填写所选地域的 API Key 和业务空间 ID")
         if self.state not in ("未连接", "连接失败"):
             raise ValueError("会话已经启动")
         self._set("连接中")
@@ -137,8 +136,7 @@ class Session:
                 await asyncio.sleep(0.1)
             if pc.iceGatheringState != "complete":
                 raise ValueError("本机 ICE 收集超时")
-            url = (f"https://{self.settings.workspace_id}.cn-beijing.maas.aliyuncs.com"
-                   f"/api/v1/webrtc/realtime?model={MODEL}")
+            url = self.settings.signaling_url()
             async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=25)) as client:
                 async with client.post(url, data=pc.localDescription.sdp.encode(), headers={
                     "Content-Type": "application/sdp", "Authorization": f"Bearer {self.settings.api_key}"

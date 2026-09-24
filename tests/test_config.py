@@ -1,3 +1,4 @@
+import json
 import stat
 import tempfile
 import unittest
@@ -27,6 +28,32 @@ class SettingsTest(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     config.Settings().update({"workspace_id": "evil.example.com/path"})
                 self.assertFalse(path.exists())
+
+    def test_region_selects_a_fixed_signaling_host_and_survives_reload(self):
+        with tempfile.TemporaryDirectory() as root:
+            path = Path(root) / "config.json"
+            with patch.object(config, "CONFIG_DIR", path.parent), patch.object(config, "CONFIG_PATH", path):
+                settings = config.Settings()
+                self.assertEqual(settings.region, "cn-beijing")
+                settings.update({"workspace_id": "ws-test123", "region": "ap-southeast-1"})
+                reloaded = config.Settings()
+                self.assertEqual(reloaded.public()["region"], "ap-southeast-1")
+                self.assertEqual(reloaded.signaling_url(),
+                                 "https://ws-test123.ap-southeast-1.maas.aliyuncs.com"
+                                 "/api/v1/webrtc/realtime?model=qwen3.8-omni-flash-realtime")
+                with self.assertRaises(ValueError):
+                    reloaded.update({"region": "evil.example.com", "workspace_id": "ws-changed"})
+                self.assertEqual(reloaded.workspace_id, "ws-test123")
+                self.assertEqual(config.Settings().region, "ap-southeast-1")
+
+    def test_existing_config_without_region_keeps_beijing_default(self):
+        with tempfile.TemporaryDirectory() as root:
+            path = Path(root) / "config.json"
+            path.write_text(json.dumps({"api_key": "unit-test-secret", "workspace_id": "ws-test123"}))
+            with patch.object(config, "CONFIG_DIR", path.parent), patch.object(config, "CONFIG_PATH", path):
+                settings = config.Settings()
+                self.assertEqual(settings.region, "cn-beijing")
+                self.assertIn(".cn-beijing.maas.aliyuncs.com", settings.signaling_url())
 
 
 if __name__ == "__main__":

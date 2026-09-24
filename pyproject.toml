@@ -5,8 +5,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "reachy_mini_qwen_live"
-version = "0.1.0"
-description = "让 Reachy Mini 使用百炼千问实时语音模型对话的中文社区应用"
+version = "0.2.0"
+description = "让 Reachy Mini 使用千问 Live 实时语音模型对话的中文应用"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"

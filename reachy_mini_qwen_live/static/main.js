@@ -7,6 +7,7 @@ async function api(path, options = {}) {
 }
 async function loadConfig() {
   const data = await api("/api/config");
+  $("region").value = data.region;
   $("workspace").value = data.workspace_id;
   $("voice").value = data.voice;
   $("instructions").value = data.instructions;
@@ -35,7 +36,7 @@ async function refresh() {
 }
 $("settings").addEventListener("submit", async event => {
   event.preventDefault();
-  const body = { workspace_id: $("workspace").value, voice: $("voice").value,
+  const body = { region: $("region").value, workspace_id: $("workspace").value, voice: $("voice").value,
     instructions: $("instructions").value, motion_enabled: $("motion").checked };
   if ($("key").value) body.api_key = $("key").value;
   try {
