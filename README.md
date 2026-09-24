@@ -32,7 +32,7 @@ tags:
 
 ## 安装与配置
 
-1. 在 Reachy Mini Control 的 **Discover apps** 中搜索“Reachy Mini 千问 Live”并安装，或使用下方命令从 Space 安装：
+1. 在 Reachy Mini Control 的 **Discover apps** 中搜索 `reachy-mini-qwen-live` 并安装，或使用下方命令从 Space 安装：
 
    ```sh
    curl -X POST http://127.0.0.1:8000/api/apps/install \
