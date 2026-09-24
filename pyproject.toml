@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "reachy_mini_qwen_live"
+version = "0.1.0"
+description = "让 Reachy Mini 使用百炼千问实时语音模型对话的中文社区应用"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+dependencies = [
+    "reachy-mini>=1.11,<2",
+    "aiortc>=1.15,<2",
+    "aiohttp>=3.10,<4",
+    "av>=14,<18",
+    "numpy>=1.26,<3",
+    "certifi",
+    "platformdirs>=4,<5"
+]
+keywords = ["reachy-mini-app", "qwen", "实时语音", "百炼"]
+
+[project.entry-points."reachy_mini_apps"]
+reachy_mini_qwen_live = "reachy_mini_qwen_live.main:ReachyMiniQwenLive"
+
+[tool.setuptools]
+package-dir = { "" = "." }
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["reachy_mini_qwen_live*"]
+exclude = ["tests*", "build*"]
+
+[tool.setuptools.package-data]
+reachy_mini_qwen_live = ["static/*"]

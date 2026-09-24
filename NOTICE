@@ -1,0 +1,6 @@
+Reachy Mini 千问 Live
+Copyright 2026 Reachy Mini 千问 Live contributors
+
+本应用是独立编写的千问实时语音接入实现。
+设计思路参考 Enricx 的 Reachy Mini GPT-Live 社区项目；未包含该项目源码或素材。
+Reachy Mini SDK 由 Pollen Robotics 开发，千问实时模型服务由阿里云百炼提供。

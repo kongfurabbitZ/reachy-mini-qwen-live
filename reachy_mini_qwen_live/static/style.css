@@ -1,0 +1,10 @@
+:root { color-scheme: light; font-family: -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; color:#263238; background:#f5f7fa; }
+* { box-sizing:border-box; } body { margin:0; } main { max-width:800px; margin:0 auto; padding:28px 18px 60px; }
+header { margin-bottom:28px; } .eyebrow { color:#147d8a; font-size:12px; font-weight:700; letter-spacing:.14em; }
+h1 { font-size:42px; margin:9px 0; } h2 { font-size:20px; margin:0 0 20px; } p { line-height:1.55; }
+.card { background:white; border:1px solid #dce4e8; border-radius:18px; padding:24px; margin:18px 0; box-shadow:0 8px 28px #26323809; }
+.row,.buttons { display:flex; align-items:center; justify-content:space-between; gap:12px; } .buttons { justify-content:flex-start; margin:18px 0 6px; flex-wrap:wrap; }
+.badge { background:#dff5ef; border-radius:99px; padding:7px 14px; font-weight:600; }
+label { display:block; margin:16px 0; font-weight:600; } input:not([type=checkbox]),select,textarea { display:block; width:100%; border:1px solid #c9d4da; border-radius:10px; padding:12px; margin-top:7px; font:inherit; }
+.check { display:flex; gap:9px; align-items:center; } button { border:1px solid #b8c8cc; border-radius:10px; padding:11px 18px; background:white; font:inherit; cursor:pointer; } button.primary { background:#087f8c; color:white; border-color:#087f8c; } button:disabled { opacity:.45; cursor:default; }
+.hint { color:#66767e; font-size:14px; } .error { color:#b42318; background:#fff0ee; padding:11px; border-radius:8px; } .transcript { min-height:45px; } .transcript p { border-bottom:1px solid #e7ecef; padding-bottom:9px; }
