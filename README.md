@@ -21,6 +21,8 @@ tags:
 
 本应用只使用百炼官方实时接口，不把 Key 发送到中转服务，也不在 Hugging Face Space 页面收集 Key。Space 是安装入口；真正的语音连接在你自己的 Reachy Mini 或运行 Control 的电脑上建立。
 
+如果这个应用对你有帮助，欢迎在[爱发电自愿支持后续开发](https://afdian.com/a/kongfurabbit)。赞赏不影响应用下载和功能；金额及赞助月份以爱发电页面为准。
+
 ## 已实现的功能
 
 - `qwen3.8-omni-flash-realtime`：WebRTC 实时音频对话，服务端语音活动检测，支持用户插话时清除待播放音频。
